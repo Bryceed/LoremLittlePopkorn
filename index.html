@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Lorem Little Popkorn</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Lorem Litte Popkorn</h1>
+            <form action="#" method="post">
+                <label for="paragrafos">Quantidade de parágrafos</label>
+                <select name="paragrafos" id="paragrafos" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <br />
+                <label for="tamanho">Comprimento dos parágrados</label>
+                <select name="tamanho" id="tamanho" required>
+                    <option value="curto">Curtos</option>
+                    <option value="medio">Médios</option>
+                    <option value="longo">Longos</option>
+                </select>
+                <br />
+                <br />
+                <input type="submit" value="Bota pra gerar" />
+            </form>
+
+            <div id="result">Aguardando input...</div>
+        </div>
+
+        <div class="footer">
+            <p class="text center">
+                Feito por
+                <a href="https://github.com/bryceed" target="_blank"
+                    >Wellington N.</a
+                >
+                a fim de estudos (e a epilepsia que lute)
+            </p>
+        </div>
+
+        <script>
+            $pipokinha = {
+                initial:
+                    "Pipokinha, rainha da putaria (rainha da putaria, rainha da putaria)",
+                phrases: {
+                    fillers: [
+                        ["bota na, bota na, bota na", "bota na Pipokinha"],
+                        [
+                            "de quatro que entra tudo, dá um tesão do caralho",
+                            "de quatro, de quatro"
+                        ],
+                        [
+                            "vem com o bigodinho de Hitler, que minha pepeca é terrorista",
+                            "Pipokinha, princesa da putaria"
+                        ],
+                        [
+                            "quando eu morrer, eu quero ser enterrada de quatro (é)",
+                            "porque assim a terra vem me comer do jeitinho que eu gosto"
+                        ],
+                        [
+                            "eu não quero de frente, eu não quero de lado",
+                            "quero de quatro, quero de quatro"
+                        ],
+                        ["de quatro que entra tudo", "dá um tesão do caralho"],
+                        ["de quatro, de quatro", "bota na Pipokinha"]
+                    ]
+                }
+            };
+
+            function generateText() {
+                let paragrafos = document.getElementById("paragrafos").value;
+                let tamanho = document.getElementById("tamanho").value;
+                let result = document.getElementById("result");
+                let text = "";
+
+                // O filler[0] será sempre (e somente) o início da primeira frase
+                // os demais fillers devem ser adicionados em ordem, repetindo o primeiro e segundo item duas vezes.
+                // adicionar espaço e vírgula no final de cada string
+
+                let filler = $pipokinha.phrases.fillers;
+                let fillerLength = filler.length;
+                let fillerIndex = 0;
+                let isParagraphEnought = false; //
+                let phrase = text;
+
+                for (let i = 0; i < paragrafos; i++) {
+                    let phraseLength = 0;
+
+                    if (tamanho == "curto") {
+                        phraseLength = Math.floor(Math.random() * 2) + 1;
+                    } else if (tamanho == "medio") {
+                        phraseLength = Math.floor(Math.random() * 3) + 3;
+                    } else if (tamanho == "longo") {
+                        phraseLength = Math.floor(Math.random() * 4) + 5;
+                    }
+
+                    for (let j = 0; j < phraseLength; j++) {
+                        j == 0 ? (phrase += " ") : ", ";
+                        // uppercase first letter
+                        j == 0 ??
+                            (phrase +=
+                                filler[fillerIndex][0][0].toUpperCase() +
+                                filler[fillerIndex][0].slice(1));
+                        (phrase +=
+                            filler[fillerIndex][0] +
+                            ", " +
+                            filler[fillerIndex][1]),
+                            ", " +
+                                filler[fillerIndex][0] +
+                                ", " +
+                                filler[fillerIndex][1];
+                        fillerIndex++;
+                        if (fillerIndex >= fillerLength) {
+                            fillerIndex = 0;
+                        }
+                    }
+
+                    fillerIndex++;
+                    if (fillerIndex >= fillerLength) {
+                        fillerIndex = 0;
+                    }
+
+                    text += phrase + (i < paragrafos - 1 ? "<br><br>" : ".");
+                    phrase = "";
+                }
+
+                result.innerHTML = $pipokinha.initial + text;
+            }
+
+            document
+                .querySelector("form")
+                .addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    generateText();
+                });
+
+            generateText();
+        </script>
+    </body>
+</html>

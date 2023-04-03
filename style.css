@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #d10f87;
+    margin: 0;
+    padding: 0;
+    animation: BackgroundPulse 1s infinite;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+    color: #fff;
+    text-shadow: 0 1px 3px #d10f87;
+}
+
+form {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #eee;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px 1px #414141, 0 0 0 1px #d300b7;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form select {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+form input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #d10f87c2;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 3px #000, 0 0 4px #fff;
+    transition: ease-out 0.3s;
+}
+form input:hover {
+    animation: ColorAndPulse 0.4s infinite;
+    transform: scale(1.1);
+    border-radius: 0;
+}
+
+.app {
+    min-height: calc(100vh - 56px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer {
+    color: #fff;
+    font-size: 15px;
+    width: 100%;
+    padding: 1.5px 0;
+    margin: 0;
+}
+.footer a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    animation: ColorAndPulse 2s infinite;
+    border-radius: 2px
+}
+
+.text.center {
+    text-align: center;
+}
+
+@keyframes ColorAndPulse {
+    0% {
+        background-color: #cf2984;
+        color: #fff;
+        text-shadow: 0 0 3px #cf2984, 0 0 4px #fff;
+    }
+    50% {
+        background-color: #fff;
+        color: #cf2984;
+        text-shadow: 0 0 3px #fff, 0 0 4px #cf2984;
+    }
+    100% {
+        background-color: #cf2984;
+        color: #fff;
+        text-shadow: 0 0 3px #cf2984, 0 0 4px #fff;
+    }
+}
+@keyframes BackgroundPulse {
+    0% {
+        background-color: #cf2984;
+    }
+    10% {
+        background-color: #ececec;
+    }
+    100% {
+        background-color: #cf2984;
+    }
+}
+
+#result {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #eee;
+    text-align: center;
+    margin: 24px auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px 1px #414141, 0 0 0 1px #d300b7;
+    max-height: 50vh;
+    overflow-y: auto;
+}
